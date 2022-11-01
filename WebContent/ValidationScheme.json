@@ -1,0 +1,249 @@
+{
+	"Student": {
+		"id": {
+			"type": "Text",
+			"min-length": 7,
+			"max-length": 7,
+			"required": true,
+			"editable": false
+		},
+		"name": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 30,
+			"required": true,
+			"editable": true
+		},
+		"dept_id": {
+			"type": "Text",
+			"min-length": 4,
+			"max-length": 4,
+			"required": true,
+			"editable": true
+		},
+		"year": {
+			"type": "Text",
+			"max-length": 4,
+			"min-length": 4,
+			"required": true,
+			"editable": true
+		},
+		"phn": {
+			"type": "Text",
+			"min-length": 10,
+			"max-length": 10,
+			"required": true,
+			"editable": true
+		},
+		"age": {
+			"type": "Text",
+			"min-length": 2,
+			"max-length": 2,
+			"required": true,
+			"editable": true
+		},
+		"tutorID": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 6,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Department": {
+		"id": {
+			"type": "Text",
+			"min-length": 4,
+			"max-length": 4,
+			"required": true,
+			"editable": false
+		},
+		"name": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 50,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Admins": {
+		"admin_id": {
+			"type": "Text",
+			"min-length": 10,
+			"max-length": 10,
+			"required": true,
+			"editable": false
+		},
+		"name": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 30,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Course": {
+		"id": {
+			"type": "Text",
+			"min-length": 5,
+			"max-length": 5,
+			"required": true,
+			"editable": false
+		},
+		"name": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 50,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Exam": {
+		"id": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 3,
+			"required": true,
+			"editable": false
+		},
+		"Edate": {
+			"type": "Date",
+			"required": true,
+			"editable": true
+		},
+		"courseID": {
+			"type": "Text",
+			"min-length": 5,
+			"max-length": 5,
+			"required": true,
+			"editable": true
+		}
+	},
+	"login": {
+		"username": {
+			"type": "Text",
+			"min-length": 10,
+			"max-length": 30,
+			"required": true,
+			"editable": false
+		},
+		"pswd": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 20,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Marks": {
+		"studID": {
+			"type": "Text",
+			"min-length": 7,
+			"max-length": 7,
+			"required": true,
+			"editable": true
+		},
+		"courseID": {
+			"type": "Text",
+			"min-length": 5,
+			"max-length": 5,
+			"required": true,
+			"editable": true
+		},
+		"min": {
+			"type": "Text",
+			"min-length": 1,
+			"max-length": 3,
+			"required": true,
+			"editable": true
+		},
+		"mout": {
+			"type": "Text",
+			"min-length": 1,
+			"max-length": 3,
+			"required": true,
+			"editable": true
+		},
+		"StaffID": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 6,
+			"required": true,
+			"editable": true
+		},
+		"examID": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 3,
+			"required": true,
+			"editable": true
+		}
+	},
+	"CourseDetails": {
+		"studID": {
+			"type": "Text",
+			"min-length": 7,
+			"max-length": 7,
+			"required": true,
+			"editable": true
+		},
+		"courseID": {
+			"type": "Text",
+			"min-length": 5,
+			"max-length": 5,
+			"required": true,
+			"editable": true
+		},
+		"staffID": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 6,
+			"required": true,
+			"editable": true
+		}
+	},
+	"Staff": {
+		"id": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 6,
+			"required": true,
+			"editable": false
+		},
+		"name": {
+			"type": "Text",
+			"min-length": 3,
+			"max-length": 30,
+			"required": true,
+			"editable": true
+		},
+		"report_to": {
+			"type": "Text",
+			"min-length": 6,
+			"max-length": 6,
+			"required": true,
+			"editable": true
+		},
+		"phone": {
+			"type": "Text",
+			"min-length": 10,
+			"max-length": 10,
+			"required": true,
+			"editable": true
+		},
+		"DOJ": {
+			"type": "Date",
+			"min-length": "01-01-2000",
+			"max-length": "01-01-2030",
+			"required": true,
+			"editable": true
+		},
+		"age": {
+			"type": "Text",
+			"min-length": 2,
+			"max-length": 2,
+			"required": true,
+			"editable": true
+		}
+	}
+}	

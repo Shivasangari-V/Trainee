@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.mapper.class" value="com.rest.UserMap" />
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="ConnectionInterceptors"
+				class="com.rest.ConnectionInterceptors" />
+			<interceptor name="ValidateInterceptor"
+				class="com.rest.ValidateInterceptor" />
+			<interceptor name="StudentInterceptor"
+				class="com.rest.StudentInterceptor" />
+			<interceptor name="StaffInterceptor"
+				class="com.rest.StaffInterceptor" />
+			<interceptor name="AdminInterceptor"
+				class="com.rest.AdminInterceptor" />
+			<interceptor-stack name="Action">
+				<interceptor-ref name="ConnectionInterceptors" />
+				<interceptor-ref name="StudentInterceptor" />
+				<interceptor-ref name="ValidateInterceptor"/>
+				<interceptor-ref name="StaffInterceptor" />
+				<interceptor-ref name="AdminInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="student" class="com.rest.RESTHandler"
+			method="student" />
+		<action name="staff" class="com.rest.RESTHandler"
+			method="staff" />
+		<action name="admin" class="com.rest.RESTHandler"
+			method="admin" />
+		<action name="marks" class="com.rest.RESTHandler"
+			method="marks" />
+		<action name="exam" class="com.rest.RESTHandler" method="exam" />
+		<action name="department" class="com.rest.RESTHandler"
+			method="department" />
+		<action name="course" class="com.rest.RESTHandler"
+			method="course" />
+		<action name="courseDetails" class="com.rest.RESTHandler"
+			method="courseDetails" />
+	</package>
+</struts>      
