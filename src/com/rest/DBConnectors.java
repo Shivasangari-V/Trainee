@@ -11,7 +11,17 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 public class DBConnectors { 
 	static Connection con=null;
 	public static String currentDirectory = System.getProperty("user.dir");
-  	public DBConnectors() {
+	public DBConnectors() {
+		
+	}
+  	public DBConnectors(String user,String password,String databaseName,String status){
+  		try {
+  			Class.forName("com.mysql.cj.jdbc.Driver");
+  			String connection = "jdbc:mysql://localhost:3306/"+databaseName;
+		    con = (Connection) DriverManager.getConnection(connection,user,password);
+  		}catch(Exception e) {
+  			e.printStackTrace();
+  		}
   	}
 	public DBConnectors(String user,String password,String databaseName) {
 		try {

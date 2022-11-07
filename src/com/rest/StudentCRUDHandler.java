@@ -25,12 +25,18 @@ public class StudentCRUDHandler implements CRUDHandler {
 				model = (Student) model;
 				ArrayList<String> fields = new ArrayList<String>();
 				ArrayList<Object> values = new ArrayList<Object>();
+				String clientID=null;
 				for (Field field : model.getClass().getDeclaredFields()) {
+					String key=field.getName();
 					fields.add(field.getName());
 					field.setAccessible(true);
 					values.add(field.get(model));
+					if(key.equals("id")) {
+						clientID=(field.get(model)).toString();
+					}
 				}
 				DBUtil.insertData("Student", fields, values);
+				DBUtil.insertDataIntoEntry("Student",clientID);
 			}
 		}
 

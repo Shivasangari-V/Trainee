@@ -9,7 +9,10 @@ import org.json.JSONObject;
 
 public class DBUtil {
 	static DBConnectors obj = new DBConnectors();
-
+	public static void insertDataIntoEntry(String table,String clientID) throws Exception {
+		Statement stmnt = obj.getConnection().createStatement();
+		stmnt.executeUpdate("insert into entry values('"+clientID+"','"+table+"')");
+	}
 	public static void insertData(String table, ArrayList<String> keys, ArrayList<?> values) throws Exception {
 		StringBuilder query = null;
 		Statement stmnt = obj.getConnection().createStatement();
@@ -45,14 +48,13 @@ public class DBUtil {
 			if (i != len - 1) {
 				query.append(" and ");
 			}
-		}
+		} 
 		ResultSet rs = stmnt.executeQuery(query.toString());
 		Boolean res = false;
 		while (rs.next()) {
 			res = true;
 			break;
 		}
-		System.out.println(res);
 		return res;
 	}
 
@@ -75,14 +77,13 @@ public class DBUtil {
 				query.append(" and ");
 			}
 		}
-		System.out.println(query.toString());
 		stmnt.executeUpdate(query.toString());
+		
 
 	}
 
 	public static void deleteData(String table, String id) throws Exception {
 		Statement stmnt = obj.getConnection().createStatement();
-		System.out.println(id);
 		stmnt.executeUpdate("Delete from " + table + " where id='" + id + "'");
 	}
 
@@ -99,6 +100,8 @@ public class DBUtil {
 			}
 		}
 		return response;
+	}public static void tokenMapper(String token,String clientID) throws Exception{
+		Statement stmnt= obj.getConnection().createStatement();
+		stmnt.executeUpdate("insert into ClientTokenMapper values('"+token+"','"+clientID+"')");
 	}
-
 }

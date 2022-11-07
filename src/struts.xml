@@ -18,26 +18,46 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<interceptor-stack name="Action">
 				<interceptor-ref name="ConnectionInterceptors" />
 				<interceptor-ref name="StudentInterceptor" />
-				<interceptor-ref name="ValidateInterceptor"/>
+				<interceptor-ref name="ValidateInterceptor" />
 				<interceptor-ref name="StaffInterceptor" />
 				<interceptor-ref name="AdminInterceptor" />
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
 		<action name="student" class="com.rest.RESTHandler"
-			method="student" />
+			method="student">
+			<interceptor-ref name="Action" />
+		</action>
 		<action name="staff" class="com.rest.RESTHandler"
-			method="staff" />
+			method="staff">
+			<interceptor-ref name="Action" />
+		</action>
 		<action name="admin" class="com.rest.RESTHandler"
-			method="admin" />
+			method="admin" >
+			<interceptor-ref name="Action" />
+			</action>
 		<action name="marks" class="com.rest.RESTHandler"
-			method="marks" />
-		<action name="exam" class="com.rest.RESTHandler" method="exam" />
+			method="marks">
+			<interceptor-ref name="Action" />
+			</action>
+		<action name="exam" class="com.rest.RESTHandler" method="exam" >
+		<interceptor-ref name="Action" />
+		</action>
 		<action name="department" class="com.rest.RESTHandler"
-			method="department" />
+			method="department">
+			<interceptor-ref name="Action" />
+			</action>
 		<action name="course" class="com.rest.RESTHandler"
-			method="course" />
+			method="course">
+			<interceptor-ref name="Action" />
+			</action>
 		<action name="courseDetails" class="com.rest.RESTHandler"
-			method="courseDetails" />
+			method="courseDetails">
+			<interceptor-ref name="Action"/>
+			</action>
+		<action name="token" class="com.rest.RESTHandler"
+			method="token">
+			<interceptor-ref name="Action"/>
+			</action>
 	</package>
 </struts>      

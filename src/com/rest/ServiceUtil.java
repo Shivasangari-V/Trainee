@@ -8,7 +8,6 @@ public class ServiceUtil {
 		File file=new File(fileName);
 		String path=file.getAbsolutePath();
 		path= path.replace("bin", "webapps/strutpro");
-		System.out.println("Path ::::: " + path);
 		return path;
 	}
 	public static void main(String args[]) throws Exception {

@@ -14,6 +14,7 @@ import org.json.JSONObject;
 public class RESTHandler {
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
+	public static int count = 0;
 
 	public JSONObject getQueryParam() {
 		JSONObject response = new JSONObject();
@@ -23,6 +24,16 @@ public class RESTHandler {
 			response.put(parameterName, request.getParameter(parameterName));
 		}
 		return response;
+	}
+
+	public void getToken() throws Exception {
+		response.setContentType("application/json");
+		JSONObject queryParam = this.getQueryParam();
+		String token = ClientTokenGenrator.tokenGenerator(queryParam.get("userID").toString());
+		JSONObject response_json = new JSONObject();
+		PrintWriter out = response.getWriter();
+		response_json.put("Token", token);
+		out.write(response_json.toString());
 	}
 
 	public void postDepartment() throws Exception {
@@ -35,7 +46,6 @@ public class RESTHandler {
 		response.setStatus(response_json.getInt("statusCode"));
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
-
 	}
 
 	public void deleteDepartment() throws Exception {
@@ -47,7 +57,6 @@ public class RESTHandler {
 		response.setStatus(response_json.getInt("statusCode"));
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
-
 	}
 
 	public void putDepartment() throws Exception {
@@ -95,7 +104,6 @@ public class RESTHandler {
 		response.setStatus(response_json.getInt("statusCode"));
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
-
 	}
 
 	public void putCourse() throws Exception {
@@ -213,12 +221,13 @@ public class RESTHandler {
 		CRUDHandler crud = new ExamCRUDHandler();
 		PrintWriter out = response.getWriter();
 		JSONObject queryParam = this.getQueryParam();
+
 		JSONObject response_json = crud.getData(queryParam);
 		response.setStatus(response_json.getInt("statusCode"));
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
 	}
-	
+
 	public void postStaff() throws Exception {
 		BufferedReader reader = request.getReader();
 		response.setContentType("application/json");
@@ -267,6 +276,7 @@ public class RESTHandler {
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
 	}
+
 	public void postStudent() throws Exception {
 		BufferedReader reader = request.getReader();
 		response.setContentType("application/json");
@@ -310,11 +320,11 @@ public class RESTHandler {
 		CRUDHandler crud = new StudentCRUDHandler();
 		PrintWriter out = response.getWriter();
 		JSONObject queryParam = this.getQueryParam();
+//		Thread.sleep(10000);
+		System.out.println("API Call count: " + count++);
 		JSONObject response_json = crud.getData(queryParam);
 		response.setStatus(response_json.getInt("statusCode"));
 		response_json.remove("statusCode");
 		out.write(response_json.toString());
 	}
-
-
 }
